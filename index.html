@@ -142,17 +142,21 @@
     .section-note { color: var(--muted); font-size: 13px; }
 
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-    .art {
-      height: 310px;
-      margin-bottom: 16px;
-      position: relative;
-      overflow: hidden;
-      background-color: #d6c8ad;
-    }
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 14px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.gallery article {
+  flex: 0 0 calc((100% - 44px) / 3);
+  min-width: 250px;
+  scroll-snap-align: start;
+}
+.gallery::-webkit-scrollbar { height: 6px; }
+.gallery::-webkit-scrollbar-thumb { background: #c8c1b3; }
     .art::before, .art::after {
       content: "";
       position: absolute;
@@ -241,7 +245,8 @@
       .hero { min-height: 0; grid-template-columns: 1fr; gap: 32px; padding: 54px 0; }
       .hero-art { min-height: 330px; }
       section { padding: 58px 0; }
-      .gallery { grid-template-columns: 1fr; gap: 28px; }
+      .gallery { gap: 16px; }
+.gallery article { flex-basis: 85%; }
       .art { height: 340px; }
       .section-head { display: block; }
       .section-note { margin-top: 10px; }
@@ -288,19 +293,32 @@
         <div class="gallery">
   <article>
     <img class="art"
-         src="488298704_2895802503923916_8396101184755607480_n.jpg"
-         alt="Colourful painting of two smiling children"
-         style="display:block;width:100%;object-fit:cover;">
-    <h3 class="art-title">Two Smiling Children</h3>
+         src="590736664_3138769816293849_5482475629194968888_n.jpg"
+         alt="Painting of a woman with a dog"
+         style="display:block;width:100%;object-fit:cover;object-position:center 55%;">
+    <h3 class="art-title">Portrait with a Dog</h3>
     <div class="art-detail">Portrait · Original artwork</div>
   </article>
   <article>
-    <img class="art"
-         src="587012921_3137759573061540_9167482340238844959_n.jpg"
-         alt="Painted portrait of an older man wearing glasses and purple clothing"
-         style="display:block;width:100%;object-fit:cover;object-position:center 20%;">
-    <h3 class="art-title">Portrait in Purple</h3>
-    <div class="art-detail">Portrait · Original artwork</div>
+    <img class="art" src="dog.jpg"
+         alt="Close-up painted portrait of a dog"
+         style="display:block;width:100%;object-fit:cover;">
+    <h3 class="art-title">Dog Portrait</h3>
+    <div class="art-detail">Wildlife · Original artwork</div>
+  </article>
+  <article>
+    <img class="art" src="floods.jpg"
+         alt="Painting of people and homes amid floodwater"
+         style="display:block;width:100%;object-fit:cover;">
+    <h3 class="art-title">Floods</h3>
+    <div class="art-detail">Landscape · Original artwork</div>
+  </article>
+  <article>
+    <img class="art" src="makala.jpg"
+         alt="Painting of people carrying goods beside bicycles"
+         style="display:block;width:100%;object-fit:cover;">
+    <h3 class="art-title">Makala</h3>
+    <div class="art-detail">Original artwork</div>
   </article>
 </div>
     </section>
