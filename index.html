@@ -236,7 +236,26 @@
       font-size: 11px;
       text-align: center;
     }
-
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.carousel-buttons { display: flex; gap: 8px; flex-shrink: 0; }
+.carousel-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-size: 22px;
+  cursor: pointer;
+}
+.carousel-button:hover { background: var(--green); color: white; }
     @media (max-width: 700px) {
       .wrap { width: min(100% - 32px, 520px); }
       .nav { min-height: 66px; }
@@ -264,6 +283,23 @@
         <a href="enquiries.html">Enquiries</a>
       </nav>
     </div>
+    <script>
+  const artworkGallery = document.getElementById("artwork-gallery");
+
+  function artworkScrollStep() {
+    const firstCard = artworkGallery.querySelector("article");
+    const gap = parseFloat(getComputedStyle(artworkGallery).columnGap) || 0;
+    return firstCard.getBoundingClientRect().width + gap;
+  }
+
+  document.getElementById("gallery-prev").addEventListener("click", function () {
+    artworkGallery.scrollBy({ left: -artworkScrollStep(), behavior: "smooth" });
+  });
+
+  document.getElementById("gallery-next").addEventListener("click", function () {
+    artworkGallery.scrollBy({ left: artworkScrollStep(), behavior: "smooth" });
+  });
+</script>
   </header>
 
   <main>
@@ -290,7 +326,23 @@
           <h2>Selected works</h2>
           <div class="section-note">A small window into Maya’s world</div>
         </div>
-        <div class="gallery">
+       <div class="gallery" id="artwork-gallery">
+  <article>
+    <img class="art"
+         src="488298704_2895802503923916_8396101184755607480_n.jpg"
+         alt="Colourful painting of two smiling children"
+         style="display:block;width:100%;object-fit:cover;">
+    <h3 class="art-title">Two Smiling Children</h3>
+    <div class="art-detail">Portrait · Original artwork</div>
+  </article>
+  <article>
+    <img class="art"
+         src="587012921_3137759573061540_9167482340238844959_n.jpg"
+         alt="Painted portrait of an older man wearing glasses and purple clothing"
+         style="display:block;width:100%;object-fit:cover;object-position:center 20%;">
+    <h3 class="art-title">Portrait in Purple</h3>
+    <div class="art-detail">Portrait · Original artwork</div>
+  </article>
   <article>
     <img class="art"
          src="590736664_3138769816293849_5482475629194968888_n.jpg"
@@ -311,7 +363,7 @@
          alt="Painting of people and homes amid floodwater"
          style="display:block;width:100%;object-fit:cover;">
     <h3 class="art-title">Floods</h3>
-    <div class="art-detail">Landscape · Original artwork</div>
+    <div class="art-detail">Original artwork</div>
   </article>
   <article>
     <img class="art" src="makala.jpg"
@@ -320,6 +372,14 @@
     <h3 class="art-title">Makala</h3>
     <div class="art-detail">Original artwork</div>
   </article>
+</div>
+
+<div class="carousel-controls">
+  <span>Use the arrows or swipe to browse all six artworks</span>
+  <div class="carousel-buttons">
+    <button class="carousel-button" id="gallery-prev" aria-label="Previous artworks">&larr;</button>
+    <button class="carousel-button" id="gallery-next" aria-label="Next artworks">&rarr;</button>
+  </div>
 </div>
     </section>
 
