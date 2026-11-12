@@ -284,20 +284,26 @@
       </nav>
     </div>
     <script>
-  const artworkGallery = document.getElementById("artwork-gallery");
+  window.addEventListener("load", function () {
+    const artworkGallery = document.getElementById("artwork-gallery");
+    const previousButton = document.getElementById("gallery-prev");
+    const nextButton = document.getElementById("gallery-next");
 
-  function artworkScrollStep() {
-    const firstCard = artworkGallery.querySelector("article");
-    const gap = parseFloat(getComputedStyle(artworkGallery).columnGap) || 0;
-    return firstCard.getBoundingClientRect().width + gap;
-  }
+    if (!artworkGallery || !previousButton || !nextButton) return;
 
-  document.getElementById("gallery-prev").addEventListener("click", function () {
-    artworkGallery.scrollBy({ left: -artworkScrollStep(), behavior: "smooth" });
-  });
+    function artworkScrollStep() {
+      const firstCard = artworkGallery.querySelector("article");
+      const gap = parseFloat(getComputedStyle(artworkGallery).columnGap) || 0;
+      return firstCard.getBoundingClientRect().width + gap;
+    }
 
-  document.getElementById("gallery-next").addEventListener("click", function () {
-    artworkGallery.scrollBy({ left: artworkScrollStep(), behavior: "smooth" });
+    previousButton.addEventListener("click", function () {
+      artworkGallery.scrollBy({ left: -artworkScrollStep(), behavior: "smooth" });
+    });
+
+    nextButton.addEventListener("click", function () {
+      artworkGallery.scrollBy({ left: artworkScrollStep(), behavior: "smooth" });
+    });
   });
 </script>
   </header>
