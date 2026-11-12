@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ee">
+  <title>The Collection | Maya’s Gallery</title>
+  <style>
+    :root {
+      --ink: #24251f;
+      --muted: #74736b;
+      --paper: #f7f4ee;
+      --line: #dedbd2;
+      --green: #344b3d;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header { border-bottom: 1px solid var(--line); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font: bold 23px var(--serif); letter-spacing: -.5px; }
+    .brand span { color: #9b684d; }
+    nav { display: flex; gap: 26px; font-size: 13px; }
+    nav a:hover, nav .current { color: #9b684d; }
+    .intro { padding: 70px 0 40px; }
+    .eyebrow { color: #9b684d; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin: 14px 0; font: normal clamp(44px, 6vw, 70px)/1 var(--serif); letter-spacing: -2px; }
+    .intro p { max-width: 530px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 22px; padding: 10px 0 80px; }
+    .art { height: 300px; margin-bottom: 15px; position: relative; overflow: hidden; background-color: #d6c8ad; }
+    .art::before, .art::after { content: ""; position: absolute; display: block; }
+    .one {
+      background: radial-gradient(ellipse at 52% 45%, #e9c993 0 14%, transparent 15%),
+      radial-gradient(ellipse at 40% 62%, #a84f3f 0 23%, transparent 24%), linear-gradient(145deg, #d9c5a4, #74806b);
+    }
+    .one::before { width: 32%; height: 75%; left: 52%; top: 12%; border-radius: 50%; background: #39473b; transform: rotate(16deg); }
+    .two {
+      background: radial-gradient(circle at 50% 46%, #e5b467 0 18%, transparent 19%),
+      linear-gradient(160deg, #536b63 0 38%, #c47758 39% 63%, #e0d1b4 64%);
+    }
+    .two::before { width: 55%; height: 20%; left: 22%; top: 57%; border-radius: 50%; background: #384a43; transform: rotate(-22deg); }
+    .three {
+      background: radial-gradient(ellipse at 60% 35%, #d9a877 0 13%, transparent 14%),
+      linear-gradient(35deg, #7e493e 0 28%, #d8b48a 29% 51%, #536457 52% 76%, #ddd2bd 77%);
+    }
+    .three::before { width: 34%; height: 70%; left: 22%; top: 16%; border-radius: 48% 52% 36% 64%; background: #303b2f; transform: rotate(32deg); }
+    .four {
+      background: radial-gradient(ellipse at 55% 50%, #f0d6a5 0 13%, transparent 14%),
+      linear-gradient(170deg, #b9c0aa 0 35%, #647564 36% 62%, #c08a63 63%);
+    }
+    .four::before { width: 60%; height: 25%; left: 20%; top: 42%; border-radius: 50%; background: #d39c69; transform: rotate(-18deg); }
+    .five {
+      background: radial-gradient(circle at 62% 32%, #edc275 0 12%, transparent 13%),
+      linear-gradient(145deg, #384b47, #a65f49 48%, #ddc7a2);
+    }
+    .five::before { width: 28%; height: 80%; left: 35%; top: 15%; border-radius: 50% 50% 42% 42%; background: #495846; transform: rotate(24deg); }
+    .six {
+      background: radial-gradient(ellipse at 35% 32%, #e4b782 0 17%, transparent 18%),
+      linear-gradient(30deg, #65766a 0 33%, #d8c8a8 34% 58%, #9d5746 59%);
+    }
+    .six::before { width: 50%; height: 32%; left: 28%; top: 47%; border-radius: 50%; background: #38483d; transform: rotate(12deg); }
+    .art-title { margin-bottom: 5px; font: 21px var(--serif); }
+    .detail { color: var(--muted); font-size: 12px; }
+    .note { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; line-height: 1.7; }
+    footer { padding: 22px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; text-align: center; }
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 32px, 520px); }
+      .nav { min-height: 66px; }
+      .brand { font-size: 20px; }
+      nav { gap: 12px; font-size: 11px; }
+      .intro { padding: 52px 0 28px; }
+      .gallery { grid-template-columns: 1fr; gap: 28px; padding-bottom: 54px; }
+      .art { height: 340px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Maya’s <span>Gallery</span></a>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a class="current" href="collection.html">Collection</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Enquiries</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <div class="eyebrow">Browse the artwork</div>
+      <h1>The Collection</h1>
+      <p>
+        Explore expressive original works inspired by colour, memory,
+        nature, and the small moments that stay with us.
+      </p>
+    </section>
+
+    <section class="gallery" aria-label="Selected artwork">
+      <article>
+        <div class="art one" role="img" aria-label="Abstract artwork in earthy colours"></div>
+        <h2 class="art-title">Quiet Radiance</h2>
+        <div class="detail">Acrylic · Original artwork</div>
+      </article>
+      <article>
+        <div class="art two" role="img" aria-label="Abstract artwork in gold and green"></div>
+        <h2 class="art-title">Between Seasons</h2>
+        <div class="detail">Mixed media · Original artwork</div>
+      </article>
+      <article>
+        <div class="art three" role="img" aria-label="Abstract artwork in green and terracotta"></div>
+        <h2 class="art-title">The Inner Garden</h2>
+        <div class="detail">Acrylic · Original artwork</div>
+      </article>
+      <article>
+        <div class="art four" role="img" aria-label="Abstract artwork in soft green and gold"></div>
+        <h2 class="art-title">Soft Horizon</h2>
+        <div class="detail">Acrylic · Original artwork</div>
+      </article>
+      <article>
+        <div class="art five" role="img" aria-label="Abstract artwork in deep green and warm red"></div>
+        <h2 class="art-title">Earth &amp; Ember</h2>
+        <div class="detail">Mixed media · Original artwork</div>
+      </article>
+      <article>
+        <div class="art six" role="img" aria-label="Abstract artwork in sage and terracotta"></div>
+        <h2 class="art-title">A Place to Begin</h2>
+        <div class="detail">Acrylic · Original artwork</div>
+      </article>
+    </section>
+
+    <div class="note">
+      These sample artwork panels and details can be updated with Maya’s
+      actual paintings, titles, and materials.
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Maya’s Gallery · Art that speaks beyond words</div>
+  </footer>
+</body>
+</html>
